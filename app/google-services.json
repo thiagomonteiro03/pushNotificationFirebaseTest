@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "638806355540",
+    "project_id": "alura-authentication",
+    "storage_bucket": "alura-authentication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638806355540:android:bbafdf1cfcb5129798c7c1",
+        "android_client_info": {
+          "package_name": "br.com.alura.aluraesporte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638806355540-cmt5t47kduo5p304snjt9212r1q711l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqzaDChu_UtuQ7RoVczUr8LDE5OHtpQ7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638806355540-cmt5t47kduo5p304snjt9212r1q711l2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638806355540:android:66cc57bb4735479698c7c1",
+        "android_client_info": {
+          "package_name": "br.com.alura.meetups"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638806355540-cmt5t47kduo5p304snjt9212r1q711l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqzaDChu_UtuQ7RoVczUr8LDE5OHtpQ7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638806355540-cmt5t47kduo5p304snjt9212r1q711l2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
