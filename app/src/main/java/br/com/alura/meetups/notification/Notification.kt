@@ -35,6 +35,7 @@ class Notification(
             val style = createStyle(image, data)
             val notification = createNotification(data, style)
 
+
             manager.notify(id, notification)
             id++
         }

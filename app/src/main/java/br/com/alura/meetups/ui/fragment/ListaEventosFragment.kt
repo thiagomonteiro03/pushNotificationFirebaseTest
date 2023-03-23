@@ -5,7 +5,7 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import br.com.alura.meetups.R
-import br.com.alura.meetups.model.Evento
+import br.com.alura.meetups.model.Event
 import br.com.alura.meetups.ui.extensions.snackBar
 import br.com.alura.meetups.ui.recyclerview.adapter.ListaEventosAdapter
 import br.com.alura.meetups.ui.viewmodel.ComponentesVisuais
@@ -61,8 +61,8 @@ class ListaEventosFragment : BaseFragment(R.layout.lista_eventos) {
         }
     }
 
-    private fun atualiza(eventos: List<Evento>) {
-        adapter.atualiza(eventos)
+    private fun atualiza(events: List<Event>) {
+        adapter.atualiza(events)
     }
 
     private fun configuraRecyclerView() {

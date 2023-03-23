@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.alura.meetups.R
-import br.com.alura.meetups.model.Evento
+import br.com.alura.meetups.model.Event
 import br.com.alura.meetups.ui.extensions.snackBar
 import br.com.alura.meetups.ui.viewmodel.ComponentesVisuais
 import br.com.alura.meetups.ui.viewmodel.DetalhesEventoViewModel
@@ -48,31 +48,31 @@ class DetalhesEventoFragment : BaseFragment(R.layout.detalhes_evento) {
         }
     }
 
-    private fun configuraViews(evento: Evento) {
-        if (evento.imagem.isNullOrBlank()) {
+    private fun configuraViews(event: Event) {
+        if (event.imagem.isNullOrBlank()) {
             detalhes_evento_imagem.visibility = GONE
         }
-        if (evento.inscritos < 1) {
+        if (event.inscritos < 1) {
             detalhes_evento_container_inscritos.visibility = GONE
         }
     }
 
-    private fun preencheCampos(evento: Evento) {
-        detalhes_evento_imagem.load(evento.imagem)
-        detalhes_evento_inscritos.text = "${evento.inscritos}"
-        detalhes_evento_titulo.text = evento.titulo
-        detalhes_evento_descricao.text = evento.descricao
+    private fun preencheCampos(event: Event) {
+        detalhes_evento_imagem.load(event.imagem)
+        detalhes_evento_inscritos.text = "${event.inscritos}"
+        detalhes_evento_titulo.text = event.titulo
+        detalhes_evento_descricao.text = event.descricao
     }
 
     private fun configuraBotaoInscrever(
-        evento: Evento,
+        event: Event,
     ) {
 
         val toggle = detalhes_evento_botao_toggle
         val texto: String
         val fundo: Int
         val acao: () -> Unit
-        if (evento.estaInscrito){
+        if (event.estaInscrito){
             texto = "Cancelar"
             fundo = R.color.botaoCancelar
             acao = { cancela() }

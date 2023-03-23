@@ -1,34 +1,34 @@
 package br.com.alura.meetups.webclient
 
-import br.com.alura.meetups.model.Evento
-import br.com.alura.meetups.model.Usuario
+import br.com.alura.meetups.model.Event
+import br.com.alura.meetups.model.User
 import retrofit2.Response
 import retrofit2.http.*
 
-interface EventoService {
+interface EventService {
 
     @GET("events")
-    suspend fun buscaTodos(): Response<List<Evento>>
+    suspend fun buscaTodos(): Response<List<Event>>
 
     @GET("events/{id}/subscribed")
     suspend fun buscaPorId(
         @Path("id") id: String,
         @Query("email") email: String?,
-    ): Response<Evento>
+    ): Response<Event>
 
     @POST("events/{id}/subscribe")
-    suspend fun inscreve(
+    suspend fun subscribe(
         @Path("id") eventoId: String,
-        @Body usuario: Usuario,
+        @Body user: User,
     ): Response<Unit>
 
     @PUT("events/{id}/unsubscribe")
-    suspend fun cancela(
+    suspend fun cancel(
         @Path("id") eventId: String,
-        @Body usuario: Usuario,
+        @Body user: User,
     ): Response<Unit>
 
     @GET("events/subscriptions")
-    suspend fun buscaInscricoes(@Query("email") email: String): Response<List<Evento>>
+    suspend fun findSubscriptions(@Query("email") email: String): Response<List<Event>>
 
 }

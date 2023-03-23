@@ -8,13 +8,13 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alura.meetups.R
-import br.com.alura.meetups.model.Evento
+import br.com.alura.meetups.model.Event
 import coil.load
 import kotlinx.android.synthetic.main.inscricao_item.view.*
 
 class ListaInscricoesAdapter(
     private val context: Context,
-    inscricoes: List<Evento> = listOf(),
+    inscricoes: List<Event> = listOf(),
     val cliqueNoItem: (id: String) -> Unit,
 ) : RecyclerView.Adapter<ListaInscricoesAdapter.ViewHolder>() {
 
@@ -34,7 +34,7 @@ class ListaInscricoesAdapter(
 
     override fun getItemCount(): Int = inscricoes.size
 
-    fun atualiza(inscricoes: List<Evento>) {
+    fun atualiza(inscricoes: List<Event>) {
         this.inscricoes.clear()
         this.inscricoes.addAll(inscricoes)
         notifyDataSetChanged()
@@ -44,20 +44,20 @@ class ListaInscricoesAdapter(
 
         private val titulo = itemView.inscricao_item_titulo
         private val imagem = itemView.inscricao_item_imagem
-        private lateinit var evento: Evento
+        private lateinit var event: Event
 
         init {
             itemView.setOnClickListener {
-                if (::evento.isInitialized) {
-                    cliqueNoItem(this.evento.id)
+                if (::event.isInitialized) {
+                    cliqueNoItem(this.event.id)
                 }
             }
         }
 
-        fun vincula(evento: Evento) {
-            this.evento = evento
-            titulo.text = this.evento.titulo
-            val uri = this.evento.imagem
+        fun vincula(event: Event) {
+            this.event = event
+            titulo.text = this.event.titulo
+            val uri = this.event.imagem
             imagem.load(uri)
             if (uri.isNullOrBlank()) {
                 imagem.visibility = GONE

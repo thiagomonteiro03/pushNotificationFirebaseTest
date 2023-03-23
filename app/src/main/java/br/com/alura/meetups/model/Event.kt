@@ -1,6 +1,6 @@
 package br.com.alura.meetups.model
 
-data class Evento(
+data class Event(
     val id: String,
     val titulo: String,
     val descricao: String,

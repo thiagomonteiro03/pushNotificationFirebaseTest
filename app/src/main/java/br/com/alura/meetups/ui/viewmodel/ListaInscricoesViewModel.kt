@@ -1,10 +1,10 @@
 package br.com.alura.meetups.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import br.com.alura.meetups.repository.EventoRepository
+import br.com.alura.meetups.repository.EventRepository
 
-class ListaInscricoesViewModel(private val repository: EventoRepository) : ViewModel() {
+class ListaInscricoesViewModel(private val repository: EventRepository) : ViewModel() {
 
-    fun buscaInscricoes() = repository.buscaInscricoes()
+    fun buscaInscricoes() = repository.findSubscriptions()
 
 }

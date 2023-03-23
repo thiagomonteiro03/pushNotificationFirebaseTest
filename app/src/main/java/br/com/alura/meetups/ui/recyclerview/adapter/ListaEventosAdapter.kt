@@ -8,17 +8,17 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alura.meetups.R
-import br.com.alura.meetups.model.Evento
+import br.com.alura.meetups.model.Event
 import coil.load
 import kotlinx.android.synthetic.main.evento_item.view.*
 
 class ListaEventosAdapter(
     private val context: Context,
-    eventos: List<Evento> = listOf(),
+    events: List<Event> = listOf(),
     val cliqueNoItem: (id: String) -> Unit,
 ) : RecyclerView.Adapter<ListaEventosAdapter.ViewHolder>() {
 
-    private val eventos = eventos.toMutableList()
+    private val eventos = events.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(LayoutInflater.from(context)
@@ -34,9 +34,9 @@ class ListaEventosAdapter(
 
     override fun getItemCount(): Int = eventos.size
 
-    fun atualiza(eventos: List<Evento>) {
+    fun atualiza(events: List<Event>) {
         this.eventos.clear()
-        this.eventos.addAll(eventos)
+        this.eventos.addAll(events)
         notifyDataSetChanged()
     }
 
@@ -47,25 +47,25 @@ class ListaEventosAdapter(
         private val imagem = itemView.evento_item_imagem
         private val containerInscritos = itemView.evento_item_container_inscritos
         private val inscritos = itemView.evento_item_inscritos
-        private lateinit var evento: Evento
+        private lateinit var event: Event
 
         init {
             itemView.setOnClickListener {
-                if (::evento.isInitialized) {
-                    cliqueNoItem(evento.id)
+                if (::event.isInitialized) {
+                    cliqueNoItem(event.id)
                 }
             }
         }
 
-        fun vincula(evento: Evento) {
-            this.evento = evento
+        fun vincula(event: Event) {
+            this.event = event
             configuraImagem()
             configuraInscritos()
             preencheCampos()
         }
 
         private fun configuraInscritos() {
-            if (this.evento.inscritos > 0) {
+            if (this.event.inscritos > 0) {
                 containerInscritos.visibility = VISIBLE
             } else {
                 containerInscritos.visibility = GONE
@@ -73,7 +73,7 @@ class ListaEventosAdapter(
         }
 
         private fun configuraImagem() {
-            if (this.evento.imagem.isNullOrBlank()) {
+            if (this.event.imagem.isNullOrBlank()) {
                 imagem.visibility = GONE
             } else {
                 imagem.visibility = VISIBLE
@@ -81,10 +81,10 @@ class ListaEventosAdapter(
         }
 
         private fun preencheCampos() {
-            titulo.text = this.evento.titulo
-            descricao.text = this.evento.descricao
-            imagem.load(this.evento.imagem)
-            inscritos.text = "${evento.inscritos}"
+            titulo.text = this.event.titulo
+            descricao.text = this.event.descricao
+            imagem.load(this.event.imagem)
+            inscritos.text = "${event.inscritos}"
         }
 
     }
