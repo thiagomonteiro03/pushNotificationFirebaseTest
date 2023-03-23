@@ -7,9 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import br.com.alura.meetups.R
+import br.com.alura.meetups.model.Device
+import br.com.alura.meetups.preferences.FirebaseTokenPreferences
+import br.com.alura.meetups.repository.DispositivoRepository
 import br.com.alura.meetups.ui.viewmodel.ComponentesVisuais
 import br.com.alura.meetups.ui.viewmodel.EstadoAppViewModel
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -26,6 +31,21 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setSupportActionBar(activity_main_toolbar)
         configuraEstadoInicialDosComponentes()
         configuraNavigation()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        tryResendToken()
+    }
+
+    private fun tryResendToken() {
+        val preferences: FirebaseTokenPreferences by inject()
+        if (!preferences.enviado) {
+            val repository: DispositivoRepository by inject()
+            FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+                repository.save(Device(token = token))
+            }
+        }
     }
 
     private fun configuraNavigation() {
